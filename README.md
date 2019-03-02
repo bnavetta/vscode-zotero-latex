@@ -1,65 +1,34 @@
-# zoterolatex README
+# Zotero LaTeX extension
 
-This is the README for your extension "zoterolatex". After writing up a brief description, we recommend including the following sections.
+This is a VS Code extension for using [Zotero](https://www.zotero.org/) with the
+[Better BibTeX](https://retorque.re/zotero-better-bibtex) extension.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The main feature of this extension is a command to insert citations from Zotero (Cite As You Write).
+In a LaTeX file, use `Cmd-Shift-Z` and pick your source. A citation will automatically be inserted
+at the current cursor.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+If you have a citation key selected, you can jump to it in Zotero with the `Zotero: Open in Zotero` command.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You need to have Zotero installed, along with the Better BibTex extension. You'll probably also want
+some kind of LaTeX editor extension installed, such as [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop).
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `zotero.serverUrl`: the URL of the Zotero / Better BibTex server (defaults to `http://localhost:23119/better-bibtex`)
+* `zotero.latexCommand`: the LaTeX citation command to use (defaults to `autocite`)
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+After picking a reference in the Cite As You Write window, the Zotero app steals focus (at least on macOS).
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release
