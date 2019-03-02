@@ -1,0 +1,72 @@
+{
+	"name": "zoterolatex",
+	"displayName": "Zotero LaTeX",
+	"description": "Zotero LaTeX support",
+	"version": "0.0.1",
+	"license": "MIT",
+	"publisher": "bnavetta",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:zoterolatex.addCitation"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "zoterolatex.addCitation",
+				"title": "Zotero: Add Citation"
+			},
+			{
+				"command": "zoterolatex.openInZotero",
+				"title": "Zotero: Open in Zotero"
+			}
+		],
+		"keybindings": [
+			{
+				"key": "ctrl+shift+z",
+				"mac": "cmd+shift+z",
+				"command": "zoterolatex.addCitation",
+				"when": "editorLangId == latex"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Zotero LaTeX Configuration",
+			"properties": {
+				"zotero.serverUrl": {
+					"type": "string",
+					"default": "http://localhost:23119/better-bibtex",
+					"description": "URL of the Better BibLaTeX server"
+				},
+				"zotero.latexCommand": {
+					"type": "string",
+					"default": "autocite",
+					"description": "LaTeX command to use for citations"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^10.12.21",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"@types/request": "^2.48.1",
+		"request": "^2.88.0"
+	}
+}
