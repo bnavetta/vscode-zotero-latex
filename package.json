@@ -5,6 +5,10 @@
 	"version": "0.1.0",
 	"license": "MIT",
 	"publisher": "bnavetta",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bnavetta/vscode-zotero-latex"
+	},
 	"engines": {
 		"vscode": "^1.31.0"
 	},
@@ -62,12 +66,12 @@
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
+		"@types/request": "^2.48.1",
 		"tslint": "^5.12.1",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28"
 	},
 	"dependencies": {
-		"@types/request": "^2.48.1",
 		"request": "^2.88.0"
 	}
 }
