@@ -3,13 +3,13 @@
 import * as vscode from 'vscode';
 import * as request from 'request';
 
-function fetchCitation(): Thenable<string> {
-	const config = vscode.workspace.getConfiguration("zoterolatex");
-	const serverUrl = config.get('zotero.serverUrl', 'http://localhost:23119/better-bibtex');
-	const latexCommand = config.get<string>('zotero.latexCommand', 'autocite');
-	let url = `${serverUrl}/cayw?minimize=true&format=latex&command=${encodeURIComponent(latexCommand)}`;
+import * as config from './config';
+import { quickCite } from './quick-cite';
 
-	if (config.get('zotero.minimizeAfterPicking', false)) {
+function fetchCitation(): Thenable<string> {
+	let url = `${config.serverUrl()}/cayw?minimize=true&format=latex&command=${encodeURIComponent(config.latexCommand())}`;
+
+	if (config.minimizeAfterPicking()) {
 		url += '&minimize=true';
 	}
 
@@ -57,6 +57,8 @@ export function activate(context: vscode.ExtensionContext) {
 		return vscode.env.openExternal(uri);
 	});
 	context.subscriptions.push(disposable2);
+
+	context.subscriptions.push(vscode.commands.registerCommand('zoterolatex.quickCite', quickCite));
 }
 
 // this method is called when your extension is deactivated

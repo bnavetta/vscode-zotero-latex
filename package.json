@@ -2,7 +2,7 @@
 	"name": "zoterolatex",
 	"displayName": "Zotero LaTeX",
 	"description": "Zotero LaTeX support",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"license": "MIT",
 	"publisher": "bnavetta",
 	"repository": {
@@ -17,6 +17,7 @@
 	],
 	"activationEvents": [
 		"onCommand:zoterolatex.addCitation",
+		"onCommand:zoterolatex.quickCite",
 		"onCommand:zoterolatex.openInZotero"
 	],
 	"main": "./out/extension.js",
@@ -27,6 +28,10 @@
 				"title": "Zotero: Add Citation"
 			},
 			{
+				"command": "zoterolatex.quickCite",
+				"title": "Zotero: Quick Cite"
+			},
+			{
 				"command": "zoterolatex.openInZotero",
 				"title": "Zotero: Open in Zotero"
 			}
@@ -35,8 +40,14 @@
 			{
 				"key": "ctrl+shift+z",
 				"mac": "cmd+shift+z",
+				"command": "zoterolatex.quickCite",
+				"when": "editorLangId == latex || editorLangId == tex"
+			},
+			{
+				"key": "ctrl+win+z",
+				"mac": "cmd+ctrl+z",
 				"command": "zoterolatex.addCitation",
-				"when": "editorLangId == latex"
+				"when": "editorLangId == latex || editorLangId == tex"
 			}
 		],
 		"configuration": {
