@@ -52,6 +52,11 @@
 					"type": "string",
 					"default": "autocite",
 					"description": "LaTeX command to use for citations"
+				},
+				"zotero.minimizeAfterPicking": {
+					"type": "boolean",
+					"default": false,
+					"description": "Minimize all Zotero windows after picking a citation"
 				}
 			}
 		}

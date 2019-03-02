@@ -7,7 +7,11 @@ function fetchCitation(): Thenable<string> {
 	const config = vscode.workspace.getConfiguration("zoterolatex");
 	const serverUrl = config.get('zotero.serverUrl', 'http://localhost:23119/better-bibtex');
 	const latexCommand = config.get<string>('zotero.latexCommand', 'autocite');
-	const url = `${serverUrl}/cayw?format=latex&command=${encodeURIComponent(latexCommand)}`;
+	let url = `${serverUrl}/cayw?minimize=true&format=latex&command=${encodeURIComponent(latexCommand)}`;
+
+	if (config.get('zotero.minimizeAfterPicking', false)) {
+		url += '&minimize=true';
+	}
 
 	return new Promise((resolve, reject) => {
 		request.get(url, (error, _, body) => {
