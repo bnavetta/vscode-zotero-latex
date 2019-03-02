@@ -11,3 +11,7 @@ export function latexCommand() {
 export function minimizeAfterPicking() {
     return workspace.getConfiguration('zoterolatex').get('zotero.minimizeAfterPicking', false);
 }
+
+export function citeMethod() {
+    return workspace.getConfiguration('zoterolatex').get('zotero.citeMethod', 'vscode');
+}

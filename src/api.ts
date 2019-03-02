@@ -29,3 +29,26 @@ export function search(terms: string, callback: (error?: Error, results?: Entry[
         }
     });
 }
+
+// Fetch a citation via a Zotero Cite as you Write popup
+export function cayw(format: string, command: string | undefined, minimize: boolean = false): Thenable<string> {
+    let url = `${serverUrl()}/cayw?format=${encodeURIComponent(format)}`;
+
+    if (command) {
+        url += `&command=${encodeURIComponent(command)}`;
+    }
+
+    if (minimize) {
+        url += '&minimize=true';
+    }
+
+    return new Promise((resolve, reject) => {
+        request.get(url, (error, _, body) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(body);
+            }
+        });
+    });
+}

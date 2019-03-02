@@ -2,22 +2,19 @@ import * as vscode from 'vscode';
 import { Request } from 'request';
 
 import { latexCommand } from './config';
-import { search, Entry } from './search';
+import { search, Entry } from './api';
+import { insertAtCursor } from './util';
 
 // Based on https://github.com/Microsoft/vscode-extension-samples/blob/8ea86205551f2b0c5cad2712c2c4a7c1b6e2a4cd/quickinput-sample/src/quickOpen.ts
 
 export async function quickCite() {
+    console.log('Showing quick cite picker');
     const entry = await pickEntry();
 
     if (entry) {
-        const editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            return;
-        }
-
         const citation = `\\${latexCommand()}{${entry.citekey}}`;
-
-        await editor.edit(edit => edit.insert(editor.selection.active, citation));
+        console.log(`Inserting citation ${citation}`);
+        await insertAtCursor(citation);
     }
 }
 
@@ -35,7 +32,7 @@ class EntryItem implements vscode.QuickPickItem {
             
             if (names.length < 2) {
                 this.description = names.join(', ');
-            } else if (names.length == 2) {
+            } else if (names.length === 2) {
                 this.description = names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
             } else {
                 this.description = names.slice(0, -1).join(', ') + ', and ' + names[names.length - 1];

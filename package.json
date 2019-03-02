@@ -2,7 +2,7 @@
 	"name": "zoterolatex",
 	"displayName": "Zotero LaTeX",
 	"description": "Zotero LaTeX support",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"license": "MIT",
 	"publisher": "bnavetta",
 	"repository": {
@@ -17,6 +17,7 @@
 	],
 	"activationEvents": [
 		"onCommand:zoterolatex.addCitation",
+		"onCommand:zoterolatex.zoteroCite",
 		"onCommand:zoterolatex.quickCite",
 		"onCommand:zoterolatex.openInZotero"
 	],
@@ -32,22 +33,19 @@
 				"title": "Zotero: Quick Cite"
 			},
 			{
+				"command": "zoterolatex.zoteroCite",
+				"title": "Zotero: Cite as you Write"
+			},
+			{
 				"command": "zoterolatex.openInZotero",
 				"title": "Zotero: Open in Zotero"
 			}
 		],
 		"keybindings": [
 			{
-				"key": "ctrl+shift+z",
-				"mac": "cmd+shift+z",
-				"command": "zoterolatex.quickCite",
-				"when": "editorLangId == latex || editorLangId == tex"
-			},
-			{
-				"key": "ctrl+win+z",
-				"mac": "cmd+ctrl+z",
+				"key": "alt+z",
 				"command": "zoterolatex.addCitation",
-				"when": "editorLangId == latex || editorLangId == tex"
+				"when": "editorTextFocus && editorLangId == 'latex'"
 			}
 		],
 		"configuration": {
@@ -58,6 +56,16 @@
 					"type": "string",
 					"default": "http://localhost:23119/better-bibtex",
 					"description": "URL of the Better BibLaTeX server"
+				},
+				"zotero.citeMethod": {
+					"type": "string",
+					"enum": ["vscode", "zotero"],
+					"default": "vscode",
+					"description": "UI to use for adding citations",
+					"enumDescriptions": [
+						"VS Code quick picker",
+						"Zotero Cite as you Write popup"
+					]
 				},
 				"zotero.latexCommand": {
 					"type": "string",
