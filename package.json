@@ -59,7 +59,10 @@
 				},
 				"zotero.citeMethod": {
 					"type": "string",
-					"enum": ["vscode", "zotero"],
+					"enum": [
+						"vscode",
+						"zotero"
+					],
 					"default": "vscode",
 					"description": "UI to use for adding citations",
 					"enumDescriptions": [
