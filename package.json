@@ -2,7 +2,7 @@
 	"name": "zoterolatex",
 	"displayName": "Zotero LaTeX",
 	"description": "Zotero LaTeX support",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"license": "MIT",
 	"publisher": "bnavetta",
 	"repository": {
@@ -17,8 +17,6 @@
 	],
 	"activationEvents": [
 		"onCommand:zoterolatex.addCitation",
-		"onCommand:zoterolatex.zoteroCite",
-		"onCommand:zoterolatex.quickCite",
 		"onCommand:zoterolatex.openInZotero"
 	],
 	"main": "./dist/extension.js",
@@ -29,18 +27,22 @@
 				"title": "Zotero: Add Citation"
 			},
 			{
-				"command": "zoterolatex.quickCite",
-				"title": "Zotero: Quick Cite"
-			},
-			{
-				"command": "zoterolatex.zoteroCite",
-				"title": "Zotero: Cite as you Write"
-			},
-			{
 				"command": "zoterolatex.openInZotero",
 				"title": "Zotero: Open in Zotero"
 			}
 		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "zoterolatex.addCitation",
+					"when": "editorLangId == 'latex'"
+				},
+				{
+					"command": "zoterolatex.openInZotero",
+					"when": "editorLangId == 'latex'"
+				}
+			]
+		},
 		"keybindings": [
 			{
 				"key": "alt+z",
@@ -54,34 +56,20 @@
 			"properties": {
 				"zotero.serverUrl": {
 					"type": "string",
-					"default": "http://localhost:23119/better-bibtex",
-					"description": "URL of the Better BibLaTeX server",
-					"scope": "resource"
-				},
-				"zotero.citeMethod": {
-					"type": "string",
-					"enum": [
-						"vscode",
-						"zotero"
-					],
-					"default": "vscode",
-					"description": "UI to use for adding citations",
-					"scope": "resource",
-					"enumDescriptions": [
-						"VS Code quick picker",
-						"Zotero Cite as you Write popup"
-					]
+					"default": "http://localhost:23119",
+					"description": "URL of the Zotero server",
+					"scope": "window"
 				},
 				"zotero.latexCommand": {
 					"type": "string",
 					"default": "autocite",
-					"scope": "resource",
+					"scope": "window",
 					"description": "LaTeX command to use for citations"
 				},
 				"zotero.minimizeAfterPicking": {
 					"type": "boolean",
 					"default": false,
-					"scope": "resource",
+					"scope": "window",
 					"description": "Minimize all Zotero windows after picking a citation"
 				}
 			}
@@ -90,15 +78,14 @@
 	"scripts": {
 		"vscode:prepublish": "yarn run bundle",
 		"bundle": "rollup -c",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
+		"watch": "rollup -c -w",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
+		"@types/got": "^9.6.0",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.6.0",
-		"@types/request": "^2.48.1",
 		"builtin-modules": "^3.1.0",
 		"rollup": "^1.16.6",
 		"rollup-plugin-commonjs": "^10.0.1",
@@ -111,6 +98,6 @@
 		"vscode": "^1.1.35"
 	},
 	"dependencies": {
-		"request": "^2.88.0"
+		"got": "^9.6.0"
 	}
 }

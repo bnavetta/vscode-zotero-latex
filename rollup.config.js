@@ -20,10 +20,6 @@ export default {
         resolve({
             preferBuiltins: true,
         }),
-        commonjs({
-            namedExports: {
-                'request': ['get', 'post']
-            }
-        })
+        commonjs()
     ]
 }

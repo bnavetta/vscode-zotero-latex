@@ -2,12 +2,14 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"target": "es6",
-		"outDir": "out",
 		"lib": [
 			"es6"
 		],
 		"sourceMap": true,
 		"rootDir": "src",
+		"outDir": "out",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
 		"strict": true   /* enable all strict type-checking options */
 		/* Additional Checks */
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
