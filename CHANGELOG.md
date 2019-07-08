@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.3.1] - 2019-07-08
+
+### Changed
+
+* Fix configuration loading. Before, configuration was loaded from the nonexistent `zoterolatex.zotero` section, when it should have been loaded as `zotero`.
+* Use [rollup.js](https://rollupjs.org/) to bundle the extension, so it loads more quickly
+
 ## [0.3.0] - 2019-03-02
 
 ### Added

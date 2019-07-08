@@ -21,7 +21,7 @@
 		"onCommand:zoterolatex.quickCite",
 		"onCommand:zoterolatex.openInZotero"
 	],
-	"main": "./out/extension.js",
+	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -88,7 +88,8 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn run compile",
+		"vscode:prepublish": "yarn run bundle",
+		"bundle": "rollup -c",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
@@ -98,6 +99,13 @@
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.6.0",
 		"@types/request": "^2.48.1",
+		"builtin-modules": "^3.1.0",
+		"rollup": "^1.16.6",
+		"rollup-plugin-commonjs": "^10.0.1",
+		"rollup-plugin-json": "^4.0.0",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-typescript": "^1.0.1",
+		"tslib": "^1.10.0",
 		"tslint": "^5.18.0",
 		"typescript": "^3.5.2",
 		"vscode": "^1.1.35"
