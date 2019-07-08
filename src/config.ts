@@ -1,17 +1,17 @@
 import { workspace } from 'vscode';
 
 export function serverUrl() {
-    return workspace.getConfiguration('zoterolatex').get('zotero.serverUrl', 'http://localhost:23119/better-bibtex');
+    return workspace.getConfiguration('zotero').get('serverUrl', 'http://localhost:23119/better-bibtex');
 }
 
 export function latexCommand() {
-    return workspace.getConfiguration('zoterolatex').get('zotero.latexCommand', 'autocite');
+    return workspace.getConfiguration('zotero').get('latexCommand', 'autocite');
 }
 
 export function minimizeAfterPicking() {
-    return workspace.getConfiguration('zoterolatex').get('zotero.minimizeAfterPicking', false);
+    return workspace.getConfiguration('zotero').get('minimizeAfterPicking', false);
 }
 
 export function citeMethod() {
-    return workspace.getConfiguration('zoterolatex').get('zotero.citeMethod', 'vscode');
+    return workspace.getConfiguration('zotero').get('citeMethod', 'vscode');
 }

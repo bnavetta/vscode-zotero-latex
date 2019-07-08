@@ -2,7 +2,7 @@
 	"name": "zoterolatex",
 	"displayName": "Zotero LaTeX",
 	"description": "Zotero LaTeX support",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"license": "MIT",
 	"publisher": "bnavetta",
 	"repository": {
@@ -50,12 +50,13 @@
 		],
 		"configuration": {
 			"type": "object",
-			"title": "Zotero LaTeX Configuration",
+			"title": "Zotero LaTeX",
 			"properties": {
 				"zotero.serverUrl": {
 					"type": "string",
 					"default": "http://localhost:23119/better-bibtex",
-					"description": "URL of the Better BibLaTeX server"
+					"description": "URL of the Better BibLaTeX server",
+					"scope": "resource"
 				},
 				"zotero.citeMethod": {
 					"type": "string",
@@ -65,6 +66,7 @@
 					],
 					"default": "vscode",
 					"description": "UI to use for adding citations",
+					"scope": "resource",
 					"enumDescriptions": [
 						"VS Code quick picker",
 						"Zotero Cite as you Write popup"
@@ -73,11 +75,13 @@
 				"zotero.latexCommand": {
 					"type": "string",
 					"default": "autocite",
+					"scope": "resource",
 					"description": "LaTeX command to use for citations"
 				},
 				"zotero.minimizeAfterPicking": {
 					"type": "boolean",
 					"default": false,
+					"scope": "resource",
 					"description": "Minimize all Zotero windows after picking a citation"
 				}
 			}
@@ -91,12 +95,12 @@
 		"test": "yarn run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/mocha": "^2.2.42",
-		"@types/node": "^10.12.21",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.6.0",
 		"@types/request": "^2.48.1",
-		"tslint": "^5.12.1",
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28"
+		"tslint": "^5.18.0",
+		"typescript": "^3.5.2",
+		"vscode": "^1.1.35"
 	},
 	"dependencies": {
 		"request": "^2.88.0"
