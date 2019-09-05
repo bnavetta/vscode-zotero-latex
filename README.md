@@ -34,8 +34,6 @@ Note that Zotero must be running while using this extension.
 
 This extension contributes the following settings:
 
-* `zotero.citeMethod`: the UI to use for the `zotero.addCitation` command
-
 ### Server URL (`zotero.serverUrl`)
 
 This is the URL to the local [Zotero connector HTTP server](https://www.zotero.org/support/dev/client_coding/connector_http_server).
@@ -53,16 +51,3 @@ Set this to `true` to minimize all Zotero windows after picking a citation. This
 ## Known Issues
 
 After picking a reference in the Cite As You Write window, the Zotero app steals focus (at least on macOS).
-
-## Release Notes
-
-## 0.3.0
-
-* Make `zotero.addCitation` a wrapper command for key bindings. Depending on the value of `zotero.citeMethod`, it'll
-use either the Zotero window or a picker within VS Code.
-* `zotero.openInZotero` is now smarter and will expand to the word around the cursor if no text is selected.
-* Fix key binding.
-
-### 0.1.0
-
-Initial release

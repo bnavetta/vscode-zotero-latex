@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.1]
+
+* Fix to include the compiled files
+
 ## [0.4.0]
 
 ### Changed
