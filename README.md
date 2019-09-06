@@ -1,3 +1,8 @@
+# Archived
+
+The functionality here has been merged into the
+[LaTeX Utilities](https://github.com/tecosaur/LaTeX-Utilities) extension.
+
 # Zotero LaTeX extension
 
 This is a VS Code extension for using [Zotero](https://www.zotero.org/) with the
